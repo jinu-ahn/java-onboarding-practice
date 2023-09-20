@@ -52,4 +52,41 @@ class Problem1 {
         if(right - left != 1)
             exception = true;
     }
+
+    /* 계산 결과 리턴 */
+    private static int calculatorScore(List<Integer> page) {
+        int leftScore = calculatorAddOrMultiplyScore(page.get(0));
+        int rightScore = calculatorAddOrMultiplyScore(page.get(1));
+
+        return Math.max(leftScore,rightScore);
+    }
+
+    /* 스코어 계산 */
+    private static int calculatorAddOrMultiplyScore(int pageNum) {
+        int thirdDigit = 0;
+        int secondDigit = 0;
+        int firstDigit = 0;
+
+        if (pageNum > 10 && pageNum < 100) {
+            secondDigit = (pageNum % 100) / 10;
+            firstDigit = pageNum % 10;
+
+            int addScore = secondDigit + firstDigit;
+            int multiplyScore = secondDigit * firstDigit;
+            return Math.max(addScore,multiplyScore);
+        }
+
+        if(pageNum > 100){
+            thirdDigit = pageNum / 100;
+            secondDigit = (pageNum % 100) / 10;
+            firstDigit = pageNum % 10;
+
+            int addScore = thirdDigit + secondDigit + firstDigit;
+            int multiplyScore = thirdDigit * secondDigit * firstDigit;
+            return Math.max(addScore,multiplyScore);
+        }
+
+        return pageNum;
+    }
+
 }
