@@ -3,8 +3,15 @@ package onboarding;
 import java.util.Stack;
 
 public class Problem2 {
+    static boolean whileFlag = true;
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String answer = "";
+
+        while(whileFlag){
+            answer = duplicateString(cryptogram);
+            if(isCompare(cryptogram,answer)) whileFlag = false;
+            cryptogram = answer;
+        }
         return answer;
     }
 
