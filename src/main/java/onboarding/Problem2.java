@@ -35,4 +35,10 @@ public class Problem2 {
         st.push(c);
     }
 
+    /* 변경 전 문자열과 변경 후 문자열이 같은지 검증 */
+    private static boolean isCompare(String cryptgram, String decryptgram){
+        if(cryptgram.equals(decryptgram))
+            return true;
+        return false;
+    }
 }
