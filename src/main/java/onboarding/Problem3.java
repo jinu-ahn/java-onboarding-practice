@@ -2,8 +2,12 @@ package onboarding;
 
 public class Problem3 {
     public static int solution(int number) {
-        int answer = 0;
-        return answer;
+        int clapCount = 0;
+
+        for(int checkNumber=1;checkNumber<=number;checkNumber++)
+            clapCount = clap(checkNumber,clapCount);
+
+        return clapCount;
     }
 
     /* 손뼉 횟수 계산 */
