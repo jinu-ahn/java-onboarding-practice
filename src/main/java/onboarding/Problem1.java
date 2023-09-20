@@ -14,8 +14,29 @@ class Problem1 {
     static boolean exception = false;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        firstOrMaxPageException(pobi);
+        firstOrMaxPageException(crong);
+
+        sizeValidator(pobi.size());
+        sizeValidator(crong.size());
+
+        leftPageValidation(pobi.get(0));
+        leftPageValidation(crong.get(0));
+
+        rightPageValidation(pobi.get(1));
+        rightPageValidation(crong.get(1));
+
+        continuityPage(pobi);
+        continuityPage(crong);
+
+        if(exception) return EXCEPTIONS_SITUATION;
+
+        int pobiScore = calculatorScore(pobi);
+        int crongScore = calculatorScore(crong);
+
+        if(pobiScore > crongScore) return POBI_WIN;
+        if(pobiScore < crongScore) return CRONG_WIN;
+        return DRAW;
     }
 
     /* 펼친 페이지가 첫페이지 또는 끝페이지인지 확인 */
