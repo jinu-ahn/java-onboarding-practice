@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -15,9 +16,9 @@ public class Problem5 {
     static final int TEN = 10;
     static final int ONE = 1;
 
-
+    static List<Integer> answer = Arrays.asList(FIFTY_THOUSAND,TEN_THOUSAND,FIVE_THOUSAND,ONE_THOUSAND,FIVE_HUNDRED,ONE_HUNDRED,FIFTY,TEN,ONE);
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
+
         return answer;
     }
 }
