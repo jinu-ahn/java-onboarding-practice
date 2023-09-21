@@ -9,4 +9,15 @@ public class Problem4 {
         String answer = "";
         return answer;
     }
+
+    /* 대문자 알파벳인지 확인 */
+    private static boolean isUpperAlpha(char alpha) {
+        if(alpha >= UPPER_FIRST_CASE && alpha <= UPPER_LAST_CASE) return true;
+        return false;
+    }
+    /* 소문자 알파벳인지 확인 */
+    private static boolean isLowerAlpha(char alpha) {
+        if(alpha >= LOWER_FIRST_CASE && alpha <= LOWER_LAST_CASE) return true;
+        return false;
+    }
 }
