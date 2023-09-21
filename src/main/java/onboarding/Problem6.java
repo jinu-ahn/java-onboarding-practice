@@ -16,4 +16,22 @@ public class Problem6 {
         List<String> answer = List.of("answer");
         return answer;
     }
+
+    /* 도메인 형식이 맞는지 검증 */
+    private static boolean domainValidation(String email){
+        if(email.equals(DOMAIN)) return true;
+        return false;
+    }
+
+    /* 이메일 길이 검증 */
+    private static boolean emailValidation(String email) {
+        if(email.length() >= EMAIL_MIN_LENGTH && email.length() <= EMAIL_MAX_LENGTH) return true;
+        return false;
+    }
+
+    /* 닉네임 길이 검증*/
+    private static boolean nicknameValidation(String nickname){
+        if(nickname.length() >= NICKNAME_MIN_LENGTH && nickname.length() <= NICKNAME_MAX_LENGTH) return true;
+        return false;
+    }
 }
