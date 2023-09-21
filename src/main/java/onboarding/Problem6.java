@@ -34,4 +34,18 @@ public class Problem6 {
         if(nickname.length() >= NICKNAME_MIN_LENGTH && nickname.length() <= NICKNAME_MAX_LENGTH) return true;
         return false;
     }
+
+    /* 닉네임을 2글자 씩 쪼개어 map에 넣기*/
+    private static void makeMap(List<String> form) {
+        String nickname = form.get(1);
+        String email = form.get(0);
+        if (!emailValidation(email)) return;
+        if (!domainValidation(email.split("@")[1])) return;
+        if (!nicknameValidation(nickname)) return;
+
+        for (int i = 0; i < nickname.length()-1; i++) {
+            String subNickname = nickname.substring(i, i + 2);
+            map.put(subNickname, map.getOrDefault(subNickname, 0) + 1);
+        }
+    }
 }
