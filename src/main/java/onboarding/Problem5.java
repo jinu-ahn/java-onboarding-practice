@@ -1,9 +1,7 @@
 package onboarding;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.lang.reflect.Array;
+import java.util.*;
 
 public class Problem5 {
     static final int FIFTY_THOUSAND = 50000;
@@ -16,9 +14,17 @@ public class Problem5 {
     static final int TEN = 10;
     static final int ONE = 1;
 
-    static List<Integer> answer = Arrays.asList(FIFTY_THOUSAND,TEN_THOUSAND,FIVE_THOUSAND,ONE_THOUSAND,FIVE_HUNDRED,ONE_HUNDRED,FIFTY,TEN,ONE);
+    static List<Integer> div = Arrays.asList(FIFTY_THOUSAND,TEN_THOUSAND,FIVE_THOUSAND,ONE_THOUSAND,FIVE_HUNDRED,ONE_HUNDRED,FIFTY,TEN,ONE);
     public static List<Integer> solution(int money) {
-
+        ArrayList<Integer> answer = new ArrayList<>();
+        for (Integer i : div) {
+            answer.add(exchange(money,i));
+            money = money % i;
+        }
         return answer;
+    }
+    /* 환전 */
+    private static int exchange(int money,int i) {
+        return money/i;
     }
 }
