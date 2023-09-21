@@ -21,3 +21,13 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 💡 기능 요구 사항 이해
+
+- 닉네임이 두글자 이상 연속적으로 포함되어 있는 크루의 이메일을 출력하기
+
+### ✅ 기능 목록
+- [] 닉네임을 2글자씩 쪼개어 Map 넣기
+  - [] 닉네임에 연속되는 문자가 있는지 검증
+- [] 도메인이 'email.com'인지 / 길이가 11자 이상 20자 미만인지 검증
+- [] 닉네임이 1자 이상 20자 미만인지 검증
