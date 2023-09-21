@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -13,7 +14,13 @@ public class Problem6 {
     static HashMap<String,Integer> map = new HashMap<>();
     static List<String> answer = new ArrayList<>();
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        for (List<String> form : forms)
+            makeMap(form);
+
+        for(List<String> form : forms)
+            duplicateNickname(form);
+
+        Collections.sort(answer);
         return answer;
     }
 
@@ -46,6 +53,15 @@ public class Problem6 {
         for (int i = 0; i < nickname.length()-1; i++) {
             String subNickname = nickname.substring(i, i + 2);
             map.put(subNickname, map.getOrDefault(subNickname, 0) + 1);
+        }
+    }
+
+    /* 닉네임 중복 확인 */
+    private static void duplicateNickname(List<String> form) {
+        String nickname = form.get(1);
+        for (String s : map.keySet()) {
+            if(nickname.contains(s) && map.get(s) > 1)
+                answer.add(form.get(0));
         }
     }
 }
