@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -14,9 +15,19 @@ public class Problem7 {
     static final int ID_MIN_VALUE = 1;
     static final int ID_MAX_VALUE = 30;
     static final String REGEXP = "^[a-z]*$";
-    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) throws IllegalAccessException {
+        List<String> userFriends = new ArrayList<>();
+        HashMap<String,Integer> score = new HashMap<>();
+
+        if(!userValidation(user)) throw new IllegalAccessException();
+        if(!friendsValidation(friends)) throw new IllegalAccessException();
+        if(!visitorValidation(visitors)) throw new IllegalAccessException();
+
+        createMap(friends,user,userFriends);
+        input10Score(user,score,userFriends,friends);
+        input1Score(score,visitors);
+
+        return sortByScoreAndNameLimit5(score);
     }
     /* 유저 이름 유효성 검사 */
     private static boolean userValidation(String userName) {
@@ -90,5 +101,23 @@ public class Problem7 {
             if(!score.containsKey(visitor))
                 score.put(visitor,score.getOrDefault(visitor,0));
         }
+    }
+
+    /* 점수가 높은 순으로 정렬, 점수가 같으면 이름순으로 정렬 후 최대 5명 리턴*/
+    private static List<String> sortByScoreAndNameLimit5(HashMap<String,Integer> scores) {
+        List<String> sortedAnswer = new ArrayList<>();
+        for (String name : scores.keySet()) {
+            if(scores.get(name) > 0){
+                sortedAnswer.add(name);
+            }
+        }
+        sortedAnswer.sort((a,b) ->{
+            int scoreComparison = Integer.compare(scores.get(b),scores.get(a));
+            if(scoreComparison == 0) return a.compareTo(b);
+            return scoreComparison;
+        });
+
+        if(sortedAnswer.size() > 5) return sortedAnswer.subList(0,5);
+        return sortedAnswer;
     }
 }

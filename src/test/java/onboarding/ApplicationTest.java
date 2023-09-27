@@ -115,7 +115,7 @@ class ApplicationTest {
     @Nested
     class Problem7Test {
         @Test
-        void case1() {
+        void case1() throws IllegalAccessException {
             String user = "mrko";
             List<List<String>> friends = List.of(
                     List.of("donut", "andole"),
