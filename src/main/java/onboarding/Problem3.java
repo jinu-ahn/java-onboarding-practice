@@ -1,6 +1,13 @@
 package onboarding;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class Problem3 {
+    static final char THREE = '3';
+    static final char SIX = '6';
+    static final char NINE = '9';
+    static List<Character> claps = Arrays.asList(THREE,SIX,NINE);
     public static int solution(int number) {
         int clapCount = 0;
 
@@ -14,8 +21,11 @@ public class Problem3 {
     private static int clap(int number, int clapCount){
         String cNumber = String.valueOf(number);
         for (char c : cNumber.toCharArray()) {
-            if(c == '3' || c == '6' || c == '9')
-                clapCount++;
+            for (char clap : claps) {
+                if(c == clap){
+                    clapCount++;
+                }
+            }
         }
         return clapCount;
     }
