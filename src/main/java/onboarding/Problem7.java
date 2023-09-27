@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 public class Problem7 {
@@ -70,6 +71,24 @@ public class Problem7 {
     private static void createMap(List<List<String>> friends,String user,List<String> userFriends) {
         for (List<String> friend : friends) {
             if(friend.get(1).equals(user)) userFriends.add(friend.get(0));
+        }
+    }
+
+    /* 사용자와 함께 아는 친구에게 10점 부여 */
+    private static void input10Score(String user,HashMap<String,Integer> score, List<String> userFriends, List<List<String>> friends) {
+        for (List<String> friend : friends) {
+            if(userFriends.contains(friend.get(0)) && !friend.get(1).equals(user)){
+                score.put(friend.get(1),score.getOrDefault(friend.get(1),0)+10);
+            }
+        }
+    }
+    /* 방문자에게 1점 부여 */
+    private static void input1Score(HashMap<String,Integer> score, List<String> visitors){
+        for (String visitor : visitors) {
+            if(score.containsKey(visitor))
+                score.put(visitor,score.getOrDefault(visitor,0)+1);
+            if(!score.containsKey(visitor))
+                score.put(visitor,score.getOrDefault(visitor,0));
         }
     }
 }
