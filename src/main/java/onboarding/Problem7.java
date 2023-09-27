@@ -65,4 +65,11 @@ public class Problem7 {
         if(visitor.matches(REGEXP)) return true;
         return false;
     }
+
+    /* 유저의 친구 목록을 저장*/
+    private static void createMap(List<List<String>> friends,String user,List<String> userFriends) {
+        for (List<String> friend : friends) {
+            if(friend.get(1).equals(user)) userFriends.add(friend.get(0));
+        }
+    }
 }
